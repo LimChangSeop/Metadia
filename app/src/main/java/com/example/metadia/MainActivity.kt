@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         // 주의 사진 클릭 시 넘어감.
         lawBtn.setOnClickListener {
             val intent = Intent(this, CautionActivity::class.java)
