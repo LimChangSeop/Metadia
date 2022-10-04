@@ -6,9 +6,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- 블루투스 사용 가능하게 하는 퍼미션 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 블루투스 사용 가능하게 하는 퍼미션 -->
     <!-- Request legacy Bluetooth permissions on older devices. -->
     <uses-permission
         android:name="android.permission.BLUETOOTH"
@@ -45,6 +43,15 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31"
         >
+        <activity
+            android:name=".RideActivity"
+            android:exported="false"
+            >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value=""
+                />
+        </activity>
         <activity
             android:name=".RecyclerViewAdapter"
             android:exported="false"

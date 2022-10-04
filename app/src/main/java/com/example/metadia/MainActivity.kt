@@ -48,6 +48,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        caution.setOnClickListener {
+            val intent = Intent(this, CautionActivity::class.java)
+            startActivity(intent)
+        }
+
         sendBtn.setOnClickListener {
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, "")
             emailIntent.putExtra(Intent.EXTRA_TEXT, "")
@@ -57,6 +62,11 @@ class MainActivity : AppCompatActivity() {
 
         bluetooth.setOnClickListener {
             val intent = Intent(this, BluetoothActivity::class.java)
+            startActivity(intent)
+        }
+
+        rideBtn.setOnClickListener {
+            val intent = Intent(this, RideActivity::class.java)
             startActivity(intent)
         }
 
