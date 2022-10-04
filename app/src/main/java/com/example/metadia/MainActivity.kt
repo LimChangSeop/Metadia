@@ -29,23 +29,30 @@ import android.bluetooth.le.ScanCallback
 import android.os.Build
 import android.view.View
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat.startActivity
 
 class MainActivity : AppCompatActivity() {
+
+    var emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "aaa@naver.com", null))
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         // 주의 사진 클릭 시 넘어감.
-        caution.setOnClickListener {
+        lawBtn.setOnClickListener {
             val intent = Intent(this, CautionActivity::class.java)
             startActivity(intent)
         }
 
-        inquiry.setOnClickListener {
-            val intent = Intent(this, InquiryActivity::class.java)
-            startActivity(intent)
+        sendBtn.setOnClickListener {
+            emailIntent.putExtra(Intent.EXTRA_SUBJECT, "")
+            emailIntent.putExtra(Intent.EXTRA_TEXT, "")
+
+            startActivity(Intent.createChooser(emailIntent, ""))
         }
 
         bluetooth.setOnClickListener {
@@ -56,3 +63,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+

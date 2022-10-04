@@ -31,26 +31,29 @@
         android:background="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleArea">
+        app:layout_constraintTop_toBottomOf="@+id/titleArea"
+        tools:ignore="Orientation"
+        >
 
     </LinearLayout>
 
     <EditText
+        android:id="@+id/editEmail"
         android:layout_width="match_parent"
         android:layout_height="550dp"
         android:layout_margin="20dp"
         android:textSize="20dp"
         android:hint="산업안전보고법에 고객응대 근로자 보호조치가 시행됩니다. 고객응대근로자에게 폭언, 욕설 등을 하지 말아 주세요."
         android:gravity="top"
-        android:background="@null"
         android:privateImeOptions="defaultInputmode=korean"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="InvalidId"
         />
 
     <Button
-        android:id="@+id/sendBtn"
+        android:id="@+id/btnSend"
         android:layout_width="117dp"
         android:layout_height="49dp"
         android:layout_marginBottom="20dp"

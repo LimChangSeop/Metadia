@@ -11,16 +11,6 @@
     >
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="106dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/border"
-        />
-
-    <TextView
         android:id="@+id/weather"
         android:layout_width="match_parent"
         android:layout_height="106dp"
@@ -32,19 +22,19 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="369dp"
+        android:layout_height="473dp"
         android:layout_margin="10dp"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
         >
 
-        <TableRow>
+        <TableRow android:layout_marginTop="20dp">
+
 
             <ImageView
                 android:id="@+id/arrow"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="30dp"
                 android:src="@drawable/arrow"
                 />
 
@@ -62,7 +52,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="30dp"
                 android:gravity="center"
                 android:text="주행"
                 android:textSize="20dp"
@@ -86,8 +76,8 @@
             <ImageView
                 android:id="@+id/bluetooth"
                 android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginLeft="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="30dp"
                 android:src="@drawable/bluetooth"
                 />
 
@@ -106,7 +96,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="40dp"
+                android:layout_marginLeft="30dp"
                 android:gravity="center"
                 android:text="연결"
                 android:textSize="20dp"
@@ -120,7 +110,8 @@
                 android:gravity="center"
                 android:text="안전 법규"
                 android:textSize="20dp"
-                android:textStyle="bold"></TextView>
+                android:textStyle="bold"
+                ></TextView>
 
         </TableRow>
 
@@ -129,19 +120,30 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
         android:layout_margin="20dp">
 
         <Button
-            android:id="@+id/inquiry"
-            android:text="이용 문의"
+            android:id="@+id/lawBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/border"
+            android:text="안전 법규"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <Button
+            android:id="@+id/sendBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/border"
+            android:text="이용 문의"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/border"
-            android:layout_marginBottom="5dp"
+            app:layout_constraintStart_toEndOf="@+id/lawBtn"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
