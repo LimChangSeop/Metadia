@@ -14,5 +14,10 @@ class CautionActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        button2.setOnClickListener {
+            val intent = Intent(this, AccidentActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

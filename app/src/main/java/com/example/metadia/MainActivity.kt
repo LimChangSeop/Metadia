@@ -1,51 +1,37 @@
 package com.example.metadia
 
+import androidx.databinding.DataBindingUtil.setContentView
+import java.text.SimpleDateFormat
+import java.util.*
+import android.Manifest
 import android.annotation.SuppressLint
-import android.bluetooth.BluetoothAdapter
-import android.bluetooth.BluetoothDevice
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.view.LayoutInflater
-import android.view.View.inflate
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.ToggleButton
-import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import com.example.metadia.databinding.ActivityCautionBinding.inflate
-import kotlinx.android.synthetic.main.activity_main.*
-import java.time.Duration
-import java.util.jar.Manifest
-import javax.xml.datatype.DatatypeConstants.DURATION
-import android.Manifest.permission
-import android.bluetooth.le.ScanCallback
-import android.os.Build
+import android.util.Log
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import android.widget.Toast
+import android.graphics.Point
+import android.net.Uri
+import android.os.Build
+import android.os.Looper
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat.startActivity
+import com.example.metadia.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     var emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "aaa@naver.com", null))
 
+    @SuppressLint("SetTextI18n", "MissingPermission")
     @RequiresApi(Build.VERSION_CODES.Q)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         // 주의 사진 클릭 시 넘어감.
-        lawBtn.setOnClickListener {
-            val intent = Intent(this, CautionActivity::class.java)
-            startActivity(intent)
-        }
-
         caution.setOnClickListener {
             val intent = Intent(this, CautionActivity::class.java)
             startActivity(intent)
