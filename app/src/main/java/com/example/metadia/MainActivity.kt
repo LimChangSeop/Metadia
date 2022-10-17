@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "aaa@naver.com", null))
+    var emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "tmetadia@naver.com", null))
 
     @SuppressLint("SetTextI18n", "MissingPermission")
     @RequiresApi(Build.VERSION_CODES.Q)
@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         rideBtn.setOnClickListener {
-            val intent = Intent(this, RideActivity::class.java)
+            val intent = Intent(this, MapsActivity::class.java)
             startActivity(intent)
         }
 
