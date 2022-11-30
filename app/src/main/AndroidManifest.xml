@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     >
-
     <!-- 네트워크 사용에 대한 퍼미션 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 블루투스 사용 가능하게 하는 퍼미션 -->
@@ -15,21 +14,11 @@
         android:name="android.permission.BLUETOOTH_ADMIN"
         android:maxSdkVersion="30"
         />
-    <!--
- Needed only if your app looks for Bluetooth devices.
-         If your app doesn't use Bluetooth scan results to derive physical
-         location information, you can strongly assert that your app
-         doesn't derive physical location.
-    -->
-    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
-    <!--
- Needed only if your app makes the device discoverable to Bluetooth
-         devices.
-    -->
-    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" /> <!-- Needed only if your app communicates with already-paired Bluetooth devices. -->
-    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" /> <!-- Needed only if your app uses Bluetooth scan results to derive physical location. -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" /> <!-- 블루투스 pair(연동) 하기 위해 사용 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" /> <!-- 블루투스 connect(연결) 하기 위해 사용 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 위치 정보 액세스 권한 요청-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 위치 정보 액세스 권한 요청-->
 
     <application
         android:allowBackup="true"
@@ -43,7 +32,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31"
         >
-
+        <activity
+            android:name=".BluetoothActivity"
+            android:exported="false"
+            >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value=""
+                />
+        </activity>
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -55,9 +52,11 @@
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
+<!--    구글 맵 API임 없으면 구글 맵 사용 못함.-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDKEQtzK77YzqnfAs-rLAOfzlwXPLscpBk" />
+            android:value="@string/google_maps_key"
+            />
 
         <activity
             android:name=".MapsActivity"
@@ -65,52 +64,7 @@
             android:label="@string/title_activity_maps"
             />
         <activity
-            android:name=".WeatherActivity"
-            android:exported="false"
-            >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value=""
-                />
-        </activity>
-        <activity
             android:name=".AccidentActivity"
-            android:exported="false"
-            >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value=""
-                />
-        </activity>
-        <activity
-            android:name=".RideActivity"
-            android:exported="false"
-            >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value=""
-                />
-        </activity>
-        <activity
-            android:name=".RecyclerViewAdapter"
-            android:exported="false"
-            >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value=""
-                />
-        </activity>
-        <activity
-            android:name=".BluetoothActivity"
-            android:exported="false"
-            >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value=""
-                />
-        </activity>
-        <activity
-            android:name=".InquiryActivity"
             android:exported="false"
             >
             <meta-data
@@ -144,6 +98,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="false"
             >
             <meta-data

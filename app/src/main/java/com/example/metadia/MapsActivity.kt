@@ -5,31 +5,26 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
+
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.example.metadia.databinding.ActivityMapsBinding
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    // GoogleMap - 기본 지도 기능 및 데이터를 관리하기 위한 진입점
-
     private lateinit var mMap: GoogleMap
-    private lateinit var binding: ActivityMapsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityMapsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        setContentView(R.layout.activity_maps)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        // 프래그먼트에 핸들 가져오기 및 콜백 등록하기
+        // map을 사용하기 위한 기본 코드 선언
         val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+                .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
 
@@ -42,14 +37,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+    // 구글 맵 사용.
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        // 초기 위치 설정 및 마커 표시
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        // 마커를 찍어놨음 우리학교에 밑에 LatLng은 우리 학교 위도, 경도임.
+        val korea = LatLng(35.120418, 129.102505)
+        mMap.addMarker(MarkerOptions().position(korea).title("동명대학교"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(korea))
+
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
                 this,
@@ -64,7 +60,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             // for ActivityCompat#requestPermissions for more details.
             return
         }
+
+        // 자신의 위치 표시하기
         googleMap.isMyLocationEnabled = true
+
+        // 지도 맵에 우측 상단에 버튼이 하나 생기고 누르면 자신의 위치로 Zoom-In이 됨.
         googleMap.uiSettings.isZoomControlsEnabled = true
     }
 }

@@ -11,6 +11,8 @@ class IntroActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
+
+        // postDelayed로 3초 뒤에 메인화면으로 넘어감(3000 = 3초)
         Handler().postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
             finish()
